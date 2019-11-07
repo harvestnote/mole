@@ -25,4 +25,4 @@ def get_url(url):
 
 if __name__ == "__main__":
     get_url("http://www.520mojing.com")
-    print("ok")
+    
