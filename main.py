@@ -17,10 +17,12 @@ def get_url(begian_url):
     if requests.get(begian_url).status_code == 200:
         print("url....ok")
         pattern = re.compile("http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+.html")
-        pattern_jpg = re.compile("http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+.jpg")
+        pattern_jpg = re.compile("[a-zA-z]+://[^\s]*.jpg")
 
         reponse = requests.get(begian_url)
         content = reponse.text
+
+         
 
         get_url_result = pattern.findall(content)
         get_jpg_result = pattern_jpg.findall(content)
@@ -48,7 +50,7 @@ def get_url(begian_url):
             tmpIm = BytesIO(response.content)
             im = Image.open(tmpIm)
             if im.size[0] > 1000 and im.size[1] > 1000:
-                wget.download(i)
+                print(jpg_data[i])
 
         jpg_data.clear()
 
