@@ -12,7 +12,7 @@ def put_date(q):
                 q.put(i)
                 if q.qsize() == 10:
                     print("qsize :" + str(q.qsize()))
-                    
+
 
                     con.wait(1)
                     con.notify(1)
